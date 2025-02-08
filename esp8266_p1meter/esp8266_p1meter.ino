@@ -127,15 +127,18 @@ void send_metric(String name, long metric)
     send_mqtt_message(topic.c_str(), output);
 }
 
-void send_data_to_broker()
+void send_data_to_broker_fast()
+{
+    send_metric("actual_consumption", ACTUAL_CONSUMPTION);
+    send_metric("actual_returndelivery", ACTUAL_RETURNDELIVERY);
+}
+
+void send_data_to_broker_all()
 {
     send_metric("consumption_low_tarif", CONSUMPTION_LOW_TARIF);
     send_metric("consumption_high_tarif", CONSUMPTION_HIGH_TARIF);
     send_metric("returndelivery_low_tarif", RETURNDELIVERY_LOW_TARIF);
     send_metric("returndelivery_high_tarif", RETURNDELIVERY_HIGH_TARIF);
-    send_metric("actual_consumption", ACTUAL_CONSUMPTION);
-    send_metric("actual_returndelivery", ACTUAL_RETURNDELIVERY);
-
     send_metric("l1_instant_power_usage", L1_INSTANT_POWER_USAGE);
     send_metric("l2_instant_power_usage", L2_INSTANT_POWER_USAGE);
     send_metric("l3_instant_power_usage", L3_INSTANT_POWER_USAGE);
@@ -154,7 +157,6 @@ void send_data_to_broker()
     send_metric("short_power_drops", SHORT_POWER_DROPS);
     send_metric("short_power_peaks", SHORT_POWER_PEAKS);
 }
-
 // **********************************
 // * P1                             *
 // **********************************
@@ -436,8 +438,13 @@ void processLine(int len) {
 
     bool result = decode_telegram(len + 1);
     if (result) {
-        send_data_to_broker();
+        send_data_to_broker_fast();
         LAST_UPDATE_SENT = millis();
+        ALL ++;
+        if(ALL == 30){
+          send_data_to_broker_all();
+          ALL = 0;
+        }
     }
 }
 

@@ -3,7 +3,7 @@
 // **********************************
 
 // Update treshold in milliseconds, messages will only be sent on this interval
-#define UPDATE_INTERVAL 60000  // 1 minute
+#define UPDATE_INTERVAL 2000  // 1 minute
 //#define UPDATE_INTERVAL 300000 // 5 minutes
 
 // * Baud rate for both hardware and software 
@@ -76,3 +76,6 @@ long SHORT_POWER_PEAKS;
 
 // * Set during CRC checking
 unsigned int currentCRC = 0;
+
+//update all
+int ALL = 0;
