@@ -97,7 +97,7 @@ sensors/power/p1meter/short_power_peaks 0
 
 ## Home Assistant Configuration
 
-Use this [example](https://raw.githubusercontent.com/daniel-jong/esp8266_p1meter/master/assets/p1_sensors.yaml) for home assistant's `sensor.yaml`
+Use this [example](https://raw.githubusercontent.com/JanStry/esp8266_p1meter/refs/heads/master/assets/p1_sensors.yaml) for home assistant's `sensor.yaml`
 
 The automatons are yours to create.
 And always remember that sending alerts in case of a power outtage only make sense when you own a UPS battery :)
