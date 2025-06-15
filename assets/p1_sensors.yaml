@@ -1,8 +1,8 @@
 # Sensors for esp8266_p1meter to be used in Home Assistant
 mqtt:
   sensor:
-    - name: P1 Consumption Low Tariff
-      unique_id: 'sensor.p1_consumption_low_tariff'
+    - name: P1 Consumption High Tariff
+      unique_id: 'sensor.p1_consumption_high_tariff'
       device_class: energy
       state_class: total_increasing
       unit_of_measurement: kWh
@@ -10,8 +10,8 @@ mqtt:
       value_template: "{{ value|float / 1000 }}"
 
 
-    - name: P1 Consumption High Tariff
-      unique_id: 'sensor.p1_consumption_high_tariff'
+    - name: P1 Consumption Low Tariff
+      unique_id: 'sensor.p1_consumption_low_tariff'
       device_class: energy
       state_class: total_increasing
       unit_of_measurement: kWh
@@ -19,8 +19,8 @@ mqtt:
       value_template: "{{ value|float / 1000 }}"
 
 
-    - name: P1 Return Delivery High Tariff
-      unique_id: 'sensor.p1_delivery_high_tariff'
+    - name: P1 Return Delivery Low Tariff
+      unique_id: 'sensor.p1_delivery_low_tariff'
       device_class: energy
       state_class: total_increasing
       unit_of_measurement: kWh
@@ -28,8 +28,8 @@ mqtt:
       value_template: "{{ value|float / 1000 }}"
 
 
-    - name: P1 Return Delivery Low Tariff
-      unique_id: 'sensor.p1_delivery_low_tariff'
+    - name: P1 Return Delivery High Tariff
+      unique_id: 'sensor.p1_delivery_high_tariff'
       device_class: energy
       state_class: total_increasing
       unit_of_measurement: kWh
